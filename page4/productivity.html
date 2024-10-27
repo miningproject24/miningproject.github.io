@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productivity</title>
+    <link rel="stylesheet" href="css/style4.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Productivity</h1>
+
+        <div class="button-container">
+            <button onclick="showSection('productivity')">Tool Productivity</button>
+            <button onclick="showSection('requirements')">Tool Requirements</button>
+        </div>
+
+        <!-- Tool Productivity Section -->
+        <div id="productivity" class="section" style="display:none;">
+            <h2>Tool Productivity</h2>
+            <button onclick="showTool('excavator')">Excavator</button>
+            <button onclick="showTool('dumpTruck')">Dump Truck</button>
+
+            <!-- Excavator Productivity -->
+            <div id="excavator" class="tool" style="display:none;">
+                <h3>Excavator Productivity</h3>
+                <label for="bucketVolume">Volume Bucket (m³):</label>
+                <input type="number" id="bucketVolumeExcavator" placeholder="Masukkan volume bucket">
+
+                <label for="efficiencyFactor">Faktor Efisiensi (misal 0.85):</label>
+                <input type="number" step="0.01" id="efficiencyFactorExcavator" placeholder="Masukkan faktor efisiensi">
+
+                <label for="cycleTime">Waktu Siklus (menit):</label>
+                <input type="number" id="cycleTimeExcavator" placeholder="Masukkan waktu siklus">
+
+                <label for="workHours">Jam Kerja Efektif (jam):</label>
+                <input type="number" id="workHoursExcavator" placeholder="Masukkan jam kerja per hari">
+
+                <button onclick="calculateExcavatorProductivity()">Hitung Produktivitas</button>
+                <div id="resultExcavator" class="result"></div>
+            </div>
+
+            <!-- Dump Truck Productivity -->
+            <div id="dumpTruck" class="tool" style="display:none;">
+                <h3>Dump Truck Productivity</h3>
+                <label for="truckCapacity">Kapasitas Angkut (m³):</label>
+                <input type="number" id="truckCapacity" placeholder="Masukkan kapasitas angkut">
+
+                <label for="efficiencyFactorTruck">Faktor Efisiensi (misal 0.85):</label>
+                <input type="number" step="0.01" id="efficiencyFactorTruck" placeholder="Masukkan faktor efisiensi">
+
+                <label for="cycleTimeTruck">Waktu Siklus (menit):</label>
+                <input type="number" id="cycleTimeTruck" placeholder="Masukkan waktu siklus">
+
+                <label for="workHoursTruck">Jam Kerja Efektif (jam):</label>
+                <input type="number" id="workHoursTruck" placeholder="Masukkan jam kerja per hari">
+
+                <button onclick="calculateDumpTruckProductivity()">Hitung Produktivitas</button>
+                <div id="resultDumpTruck" class="result"></div>
+            </div>
+        </div>
+
+        <!-- Tool Requirements Section -->
+        <div id="requirements" class="section" style="display:none;">
+            <h2>Tool Requirements</h2>
+            <label for="targetProduction">Target Produksi (m³/hari):</label>
+            <input type="number" id="targetProduction" placeholder="Masukkan target produksi">
+
+            <button onclick="calculateToolRequirements()">Hitung Kebutuhan Alat</button>
+            <div id="resultRequirements" class="result"></div>
+        </div>
+    </div>
+    <!-- Teks copyright di pojok kiri bawah -->
+    <div class="copyright">© 2024 Renault Totagan</div>
+
+    <script src="js/script4.js"></script>
+</body>
+</html>
+

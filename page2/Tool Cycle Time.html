@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tool Cycle Time</title>
+    <link rel="stylesheet" href="ccs/styles2.css">
+    <style>
+        body {
+            background-image: url('https://images.unsplash.com/photo-1517089596392-fb9a9033e05b?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); /* Ganti dengan URL gambar yang sesuai */
+            background-size: cover; /* Agar gambar menutupi seluruh latar */
+            background-repeat: no-repeat; /* Mencegah pengulangan gambar */
+            background-position: center; /* Menempatkan gambar di tengah */
+            background-position: 40% 30%; /* Menempatkan gambar di tengah */
+        }
+
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Tool Cycle Time</h1>
+
+        <label for="equipment">Pilih Kategori Alat:</label>
+        <select id="equipment">
+            <option value="excavator">Excavator</option>
+            <option value="dumtruk">Dumtruk</option>
+            <option value="bulldozer">Bulldozer</option>
+            <option value="grader">Grader</option>
+            <option value="drum_roller">Drum Roller</option>
+        </select>
+
+        <div id="toolButtons" class="button-container">
+            <!-- Tombol angka akan muncul di sini berdasarkan alat yang dipilih -->
+        </div>
+
+        <div id="timerDisplay" class="time-display">00:00:00.00</div> <!-- Tampilan waktu -->
+
+        <h2>Riwayat Waktu</h2>
+        <ul id="equipmentHistoryList">
+            <!-- Riwayat waktu akan ditambahkan di sini -->
+        </ul>
+    </div>
+    <!-- Teks copyright di pojok kiri bawah -->
+    <div class="copyright">© 2024 Renault Totagan</div>
+
+    <script src="js/equipment-script2.js"></script>
+</body>
+</html>
+

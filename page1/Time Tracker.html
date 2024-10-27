@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Tracker</title>
+    <link rel="stylesheet" href="css/styles1.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Time Tracker</h1>
+        
+        <!-- Dropdown untuk memilih kategori waktu -->
+        <label for="category">Pilih Kategori Waktu:</label>
+        <select id="category">
+            <option value="breakdown">Breakdown</option>
+            <option value="hujan_dan_kabut">Hujan dan Kabut</option>
+            <option value="slippery">Slippery</option>
+            <option value="p5m">P5M</option>
+            <option value="p2h">P2H</option>
+            <option value="meal_and_rest">Meal and Rest</option>
+            <option value="pray">Pray</option>
+            <option value="friday_pray">Friday Pray</option>
+            <option value="safety_talk">Safety Talk</option>
+            <option value="shift_change">Shift Change</option>
+            <option value="pengisian_solar">Pengisian Solar</option>
+        </select>
+        
+        <!-- Label untuk menampilkan waktu -->
+        <div class="time-display" id="timeDisplay">00:00:00</div>
+        
+        <!-- Tombol Start, Stop, Reset, dan Hapus Riwayat -->
+        <div class="buttons">
+            <button id="startBtn">Start</button>
+            <button id="stopBtn">Stop</button>
+            <button id="resetBtn">Reset</button>
+            <button onclick="clearHistory()">Hapus Riwayat</button> <!-- Tambahkan tombol Hapus Riwayat -->
+        </div>
+
+        <!-- Kolom riwayat -->
+        <h2>Riwayat Waktu</h2>
+        <ul id="historyList"></ul>
+    </div>
+    <!-- Teks copyright di pojok kiri bawah -->
+    <div class="copyright">© 2024 Renault Totagan</div>
+
+    <script src="js/script1.js"></script>
+    <script>
+        function clearHistory() {
+            const historyList = document.getElementById('historyList');
+            historyList.innerHTML = ''; // Menghapus semua item di dalam riwayat
+        }
+    </script>
+</body>
+</html>

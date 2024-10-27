@@ -1,0 +1,94 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 10px;
+    display: flex; /* Menggunakan flexbox untuk layout */
+    justify-content: center; /* Memusatkan secara horizontal */
+    align-items: flex-start; /* Menempatkan elemen di atas */
+    height: 50vh; /* Menggunakan tinggi viewport penuh */
+    margin: 150; /* Menghapus margin default */
+    background-image: url('https://cdn.pixabay.com/photo/2017/08/06/16/52/aerial-2594099_1280.jpg'); /* Ganti dengan URL gambar latar yang diinginkan */
+    background-size: cover; /* Menutupi seluruh latar belakang */
+    background-position: top; /* Memusatkan gambar latar */
+    background-size: 1290px; /* Mengatur ukuran gambar menjadi 300px */
+}
+
+.copyright {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    font-size: 12px;
+    color: white;
+}
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 80%; /* Atur lebar sesuai kebutuhan */
+    max-width: 600px; /* Lebar maksimum */
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.8); /* Warna latar belakang dengan transparansi */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    color: #333;
+    text-align: center; /* Menambahkan ini untuk memusatkan teks */
+    background-color: hsl(41, 100%, 50%); /* Warna latar belakang */
+    padding: 5px; /* Menambahkan padding */
+    margin: 0; /* Menghapus margin default */
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 2px;
+}
+
+button {
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 2px; /* Tambahkan margin atas */
+}
+
+button:hover {
+    background-color: #eded0c;
+}
+
+.section {
+    margin-top: 20px;
+}
+
+label {
+    display: block;
+    margin-top: 5px;
+    text-align: center;
+}
+
+input {
+    width: 94%;
+    padding: 8px;
+    margin-top: 5px;
+}
+
+.result {
+    margin-top: 15px;
+    font-weight: bold;
+    color: #333;
+}
+

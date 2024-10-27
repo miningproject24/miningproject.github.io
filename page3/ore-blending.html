@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ore Blending</title>
+    <style>
+        body {
+            display: flex; /* Menggunakan flexbox untuk layout */
+            justify-content: center; /* Memusatkan secara horizontal */
+            align-items: flex-start; /* Menempatkan elemen di atas */
+            height: 50vh; /* Menggunakan tinggi viewport penuh */
+            margin: 150; /* Menghapus margin default */
+            background-image: url('https://cdn.pixabay.com/photo/2017/08/06/16/52/aerial-2594099_1280.jpg'); /* Ganti dengan URL gambar latar yang diinginkan */
+            background-size: cover; /* Menutupi seluruh latar belakang */
+            background-position: top; /* Memusatkan gambar latar */
+            background-size: 1290px; /* Mengatur ukuran gambar menjadi 300px */
+
+        }
+        .container {
+            width: 95%; /* Atur lebar sesuai kebutuhan */
+            max-width: 600px; /* Lebar maksimum */
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.8); /* Warna latar belakang dengan transparansi */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center; /* Menambahkan ini untuk memusatkan teks */
+            background-color: hsl(41, 100%, 50%); /* Warna latar belakang */
+            padding: 5px; /* Menambahkan padding */
+            margin: 0; /* Menghapus margin default */
+            border-radius: 8px;
+            
+        }
+        table {
+            width: 100%;
+            margin-top: 10px;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 10px 0;
+            cursor: pointer;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        #historyList {
+            list-style-type: none;
+            padding: 0;
+        }
+        #historyList li {
+            background-color: #e9ecef;
+            margin-bottom: 5px;
+            padding: 10px;
+            border-radius: 4px;
+        }
+        /* CSS untuk teks copyright di pojok kiri bawah */
+        .copyright {
+            position: fixed;
+            bottom: 10px;
+            left: 10px;
+            font-size: 12px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Ore Blending</h1>
+
+        <!-- Tabel Input Data -->
+        <table id="oreTable">
+            <tr>
+                <th>Code</th>
+                <th>Kadar</th>
+                <th>Volume/Tonase</th>
+                <th>Jenis Input</th>
+            </tr>
+            <tr>
+                <td><input type="text" name="code"></td>
+                <td><input type="number" name="kadar" oninput="calculateTotals()"></td>
+                <td><input type="number" name="volume" oninput="calculateTotals()"></td>
+                <td>
+                    <select name="inputType" onchange="calculateTotals()">
+                        <option value="volume">Volume (m³)</option>
+                        <option value="tonase">Tonase (ton)</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+
+        <!-- Tombol untuk menambah kolom, menghitung, dan reset -->
+        <button onclick="addRow()">Tambah Kolom</button>
+        <button onclick="calculate()">Hitung</button>
+        <button onclick="resetData()">Reset</button>
+
+        <!-- Riwayat hasil perhitungan -->
+        <h3>Riwayat Hasil:</h3>
+        <ul id="historyList"></ul>
+
+        <!-- Hasil Kadar dan Volume/Tonase -->
+        <h3>Hasil Kadar: <span id="resultKadar">0</span></h3>
+        <h3>Hasil Volume/Tonase: <span id="resultVolume">0</span></h3>
+
+        <!-- Script untuk menangani perhitungan -->
+        <script>
+            function addRow() {
+                const table = document.getElementById('oreTable');
+                const row = table.insertRow();
+                row.innerHTML = `
+                    <td><input type="text" name="code"></td>
+                    <td><input type="number" name="kadar" oninput="calculateTotals()"></td>
+                    <td><input type="number" name="volume" oninput="calculateTotals()"></td>
+                    <td>
+                        <select name="inputType" onchange="calculateTotals()">
+                            <option value="volume">Volume (m³)</option>
+                            <option value="tonase">Tonase (ton)</option>
+                        </select>
+                    </td>
+                `;
+            }
+
+            function calculateTotals() {
+                const table = document.getElementById('oreTable');
+                let totalKadar = 0, totalVolume = 0;
+
+                for (let i = 1; i < table.rows.length; i++) {
+                    const kadar = parseFloat(table.rows[i].cells[1].children[0].value);
+                    const volume = parseFloat(table.rows[i].cells[2].children[0].value);
+                    const inputType = table.rows[i].cells[3].children[0].value;
+
+                    if (!isNaN(kadar) && !isNaN(volume)) {
+                        let convertedVolume = volume;
+                        if (inputType === "tonase") {
+                            convertedVolume = volume / 2;
+                        }
+                        totalKadar += kadar * convertedVolume;
+                        totalVolume += convertedVolume;
+                    }
+                }
+
+                document.getElementById('resultKadar').textContent = totalVolume > 0 ? (totalKadar / totalVolume).toFixed(2) : '0';
+                document.getElementById('resultVolume').textContent = totalVolume.toFixed(2);
+            }
+
+            function calculate() {
+                const table = document.getElementById('oreTable');
+                let totalKadar = 0, totalVolume = 0, codes = [];
+
+                for (let i = 1; i < table.rows.length; i++) {
+                    const code = table.rows[i].cells[0].children[0].value;
+                    const kadar = parseFloat(table.rows[i].cells[1].children[0].value);
+                    const volume = parseFloat(table.rows[i].cells[2].children[0].value);
+                    const inputType = table.rows[i].cells[3].children[0].value;
+
+                    if (!isNaN(kadar) && !isNaN(volume)) {
+                        let convertedVolume = volume;
+                        if (inputType === "tonase") {
+                            convertedVolume = volume / 2;
+                        }
+                        totalKadar += kadar * convertedVolume;
+                        totalVolume += convertedVolume;
+                        codes.push(code);
+                    }
+                }
+
+                if (totalVolume > 0) {
+                    const weightedAverage = totalKadar / totalVolume;
+                    const combinedCodes = codes.join(" + ");
+                    addHistory(combinedCodes, weightedAverage.toFixed(2), totalVolume.toFixed(2));
+                    alert("Rata-rata pembobotan kadar: " + weightedAverage.toFixed(2));
+                } else {
+                    alert("Masukkan data yang valid untuk kadar dan volume/tonase.");
+                }
+            }
+
+            function addHistory(combinedCodes, kadarHasil, totalVolume) {
+                const historyList = document.getElementById('historyList');
+                const entry = document.createElement('li');
+                entry.textContent = `Code: ${combinedCodes}, Hasil Kadar: ${kadarHasil}, Volume/Tonase: ${totalVolume}`;
+                historyList.appendChild(entry);
+            }
+
+            function resetData() {
+                document.getElementById('oreTable').innerHTML = `
+                    <tr>
+                        <th>Code</th>
+                        <th>Kadar</th>
+                        <th>Volume/Tonase</th>
+                        <th>Jenis Input</th>
+                    </tr>
+                    <tr>
+                        <td><input type="text" name="code"></td>
+                        <td><input type="number" name="kadar" oninput="calculateTotals()"></td>
+                        <td><input type="number" name="volume" oninput="calculateTotals()"></td>
+                        <td>
+                            <select name="inputType" onchange="calculateTotals()">
+                                <option value="volume">Volume (m³)</option>
+                                <option value="tonase">Tonase (ton)</option>
+                            </select>
+                        </td>
+                    </tr>
+                `;
+                document.getElementById('historyList').innerHTML = '';
+                document.getElementById('resultKadar').textContent = '0';
+                document.getElementById('resultVolume').textContent = '0';
+            }
+        </script>
+    </div>
+    <!-- Teks copyright di pojok kiri bawah -->
+    <div class="copyright">© 2024 Renault Totagan</div>
+</body>
+</html>
+

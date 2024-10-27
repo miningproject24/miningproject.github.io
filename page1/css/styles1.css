@@ -1,0 +1,95 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+}
+body {
+    background-image: url('https://cdn.pixabay.com/photo/2013/05/15/17/31/brown-coal-mining-111365_1280.jpg'); /* Ganti dengan URL gambar yang sesuai */
+    background-size: cover; /* Agar gambar menutupi seluruh latar */
+    background-repeat: no-repeat; /* Mencegah pengulangan gambar */
+    background-position: bottom center; /* Menempatkan gambar di tengah */
+}
+.copyright {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    font-size: 12px;
+    color: white;
+}
+
+.container {
+    background-color: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    background: rgba(255, 255, 255, 0.8); /* Warna latar belakang dengan transparansi */
+    margin-top: 1px; /* Sesuaikan nilai untuk menempatkan container lebih dekat ke bagian atas */
+    max-height: 550px; /* Menentukan batas tinggi maksimal */
+    overflow-y: auto; /* Menambahkan scroll jika konten melebihi batas tinggi */
+}
+
+h1 {
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center; /* Menambahkan ini untuk memusatkan teks */
+    background-color: hsl(41, 100%, 50%); /* Warna latar belakang */
+    padding: 5px; /* Menambahkan padding */
+    margin: 0; /* Menghapus margin default */
+    border-radius: 5px;
+    background: hsl(41, 100%, 50%); /* Warna latar belakang dengan transparansi */
+}
+
+label {
+    font-size: 18px;
+    margin-bottom: 10px;
+    margin-top: 30px; /* Menambahkan jarak atas untuk label */
+}
+
+select {
+    font-size: 16px;
+    padding: 5px;
+    margin-bottom: 20px;
+    margin-top: 30px; /* Menambahkan jarak atas untuk label */
+}
+
+.time-display {
+    font-size: 48px;
+    margin-bottom: 20px;
+    background-color: #cac7c7;
+    color: rgb(46, 45, 45);
+    padding: 10px;
+    border-radius: 10px;
+    background: rgba(243, 239, 239, 0.8); /* Warna latar belakang dengan transparansi */
+}
+
+.buttons button {
+    font-size: 18px;
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #0c7e1d;
+    color: white;
+}
+
+.buttons button:hover {
+    background-color: #dc3545;
+}
+
+#stopBtn, #resetBtn {
+    background-color: #0c7e1d;
+}
+
+#stopBtn:hover, #resetBtn:hover {
+    background-color: #dc3545;
+}
